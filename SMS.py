@@ -9,36 +9,39 @@ class StoreManagement:
         while True:
             choice = input("""
             1. Add Product
-            2. Delete Product
-            3. List Products
-            4. Add Customer
-            5. Delete Customer
-            6. List Customers
-            7. Add Orders
-            8. Delete Orders
-            9. List Orders
-            10. Exit
+            2. Update Product
+            3. Delete Product
+            4. List Products
+            5. Add Customer
+            6. Delete Customer
+            7. List Customers
+            8. Add Orders
+            9. Delete Orders
+            10. List Orders
+            11. Exit
 
             Enter your choice: """)
             if choice == '1':
                 Product.add()
             elif choice == '2':
-                Product.delete()
+                Product.update()
             elif choice == '3':
-                Product.list_all()
+                Product.delete()
             elif choice == '4':
-                Customer.add()
+                Product.list_all()
             elif choice == '5':
-                Customer.delete()
+                Customer.add()
             elif choice == '6':
-                Customer.list_all()
+                Customer.delete()
             elif choice == '7':
-                Orders.add()
+                Customer.list_all()
             elif choice == '8':
-                Orders.delete()
+                Orders.add()
             elif choice == '9':
-                Orders.list_all()
+                Orders.delete()
             elif choice == '10':
+                Orders.list_all()
+            elif choice == '11':
                 print("Exiting store management system.")
                 break
             else:

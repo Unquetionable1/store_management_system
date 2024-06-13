@@ -4,6 +4,7 @@ import sqlite3
 con = sqlite3.connect('db/store.db')
 cur = con.cursor()
 
+
 class Product:
     @staticmethod
     def add():
@@ -14,7 +15,6 @@ class Product:
                     (name, price, quantity))
         con.commit()
         print("Product added successfully.")
-        con.close()
 
     @staticmethod
     def delete():
@@ -23,15 +23,27 @@ class Product:
         cur.execute('DELETE FROM products WHERE id = ?', (product_id,))
         con.commit()
         print('Product deleted successfully')
-        con.close()
+
+    @staticmethod
+    def update():
+        Product.list_all()
+        product_id = int(input('Enter product id to update: '))
+        name = input('Enter new product name: ')
+        price = int(input('Enter new product price: '))
+        quantity = int(input('Enter new product quantity: '))
+        cur.execute('UPDATE products SET name = ?, price = ?, quantity = ? WHERE id = ?',
+                    (name, price, quantity, product_id))
+        con.commit()
+        print('Product updated successfully.')
 
     @staticmethod
     def list_all():
         cur.execute('SELECT * FROM products')
         products = cur.fetchall()
         if products:
+            for product in products:
+                print(product)
             headers = ['ID', 'Name', 'Price ', 'Quantity ']
             print(tabulate(products, headers=headers, tablefmt='github'))
         else:
             print('No products found.')
-        con.close()

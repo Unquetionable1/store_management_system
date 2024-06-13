@@ -20,7 +20,6 @@ class Customer:
                 break
         cur.execute('INSERT INTO customers (name, email) VALUES (?, ?)', (name, email))
         con.commit()
-        con.close()
         print("Customer added successfully.")
 
     @staticmethod
@@ -29,7 +28,6 @@ class Customer:
         Customer_id = int(input('Enter customer id to Delete: '))
         cur.execute('DELETE FROM customers WHERE id = ?', (Customer_id,))
         con.commit()
-        con.close()
         print('Customer deleted successfully')
 
     @staticmethod
