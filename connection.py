@@ -11,7 +11,7 @@ cur.execute('''
         quantity INTEGER
     )
 ''')
-
+#Test if push works with git 
 # Create the customers table
 cur.execute('''
     CREATE TABLE IF NOT EXISTS customers (
